@@ -1,21 +1,43 @@
 import React, {Component, PropTypes} from 'react';
-import {StyleSheet ,View, ScrollView, TouchableHighlight, Text} from 'react-native';
+import {StyleSheet, View, ScrollView, TouchableHighlight, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Util from '../Util/Util.js';
 
+import NavigatorView from './Components/NavigatorBar/NavigatorView.js';
 class MainView extends Component {
     constructor(props) {
         super(props)
+
+        this.state = {
+            boxs: this.getBoxs()
+        }
     };
 
-    handleOnPress(index) {
-        console.log('点击了' + index);
+    getBoxs() {
+        const boxs = [
+          {
+              key: 1,
+              icon: 'ios-chatbubbles',
+              text: 'test', 
+              size: 50, 
+              color:'#FF9A05',
+              component: NavigatorView
+          }
+        ];
+        return boxs
+      }
+    
+
+    handleOnPress(item) {
+        this.props.navigator.push({
+            component: item.component
+        })
     }
 
     renderTouchBox() {
-        return this.props.boxs.map((item, index) => {
+        return this.state.boxs.map((item) => {
             return(
-                <TouchableHighlight key={item.key} style={styles.touchBox} underlayColor={Util.color.silver_grey} onPress={() => this.handleOnPress(index)}>
+                <TouchableHighlight key={item.key} style={styles.touchBox} underlayColor={Util.color.silver_grey} onPress={() => this.handleOnPress(item)}>
                     <View style={styles.box}>
                         <Icon name={item.icon} size={item.size} color={item.color} style={styles.boxIcon}/>
                         <Text style={styles.boxTitle}>{item.text}</Text>
@@ -38,7 +60,7 @@ class MainView extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 44
+        marginTop: 0
     },
     boxContainer: {
         flexDirection: 'row',
@@ -78,9 +100,5 @@ const styles = StyleSheet.create({
         top: 20
     }
 });
-
-MainView.propTypes = {
-    boxs: PropTypes.array.isRequired
-}
 
 export default MainView;

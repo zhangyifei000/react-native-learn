@@ -9,53 +9,29 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
+  NavigatorIOS,
   View
 } from 'react-native';
 import MainView from './View/MainView.js';
-
 export default class react_native_learn extends Component {
 
   constructor(props) {
     super(props)
-
-    this.state = {
-      boxs: []
-    }
-  }
-
-  componentDidMount() {
-    this.setState({
-      boxs: this.getBoxs()
-    });
-  }
-
-  getBoxs() {
-    const boxs = [
-      {
-          key: 1,
-          icon: 'ios-chatbubbles',
-          text: 'test', size: 50, 
-          color:'#FF9A05'
-      },
-      {
-        key: 2,
-        icon: 'ios-chatbubbles',
-        text: 'test', size: 50, 
-        color:'#FF9A05'
-    }
-    ];
-    return boxs
   }
 
   render() {
     return (
-      <MainView boxs={this.state.boxs}/>
+      <NavigatorIOS 
+        initialRoute={{
+          index: 0,
+          title: 'Learn',
+          component: MainView,
+        }}
+        style={{flex: 1}}
+      >
+      </NavigatorIOS>
     );
   }
 }
 
-const styles = StyleSheet.create({
-
-});
-
-AppRegistry.registerComponent('react_native_learn', () => react_native_learn);
+AppRegistry.registerComponent('react_native_learn', () => react_native_learn)
