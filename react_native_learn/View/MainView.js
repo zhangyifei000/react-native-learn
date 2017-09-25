@@ -17,8 +17,8 @@ class MainView extends Component {
         const boxs = [
           {
               key: 1,
-              icon: 'ios-chatbubbles',
-              text: 'test', 
+              icon: 'ios-navigate',
+              text: 'NavigatorIOS', 
               size: 50, 
               color:'#FF9A05',
               component: NavigatorView

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
-
+import {View, ScrollView} from 'react-native';
+import Util from '../../../Util/Util.js'
 class NavigatorView extends Component {
     constructor(props) {
         super(props)
@@ -8,19 +8,31 @@ class NavigatorView extends Component {
 
     render(){
         return(
-            <View style={styles.container}>
-                
-            </View>
+            <ScrollView style={styles.container}>
+            </ScrollView>
         );
     }
 }
 
 const styles = {
     container: {
-        backgroundColor: 'red',
-        height: 100,
-        width: 100
+        marginTop: 0
     }
+}
+
+const markDownStyles = {
+    heading1: {
+        fontSize: 22,
+      },
+      strong: {
+        fontSize: 18,
+      },
+      paragraph: {
+        fontSize: 14,
+      },
+      view: {
+        borderWidth: 1,
+      },
 }
 
 export default NavigatorView;
